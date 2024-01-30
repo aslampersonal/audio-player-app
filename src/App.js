@@ -3,7 +3,7 @@ import { useSound } from 'use-sound';
 import { useDropzone } from 'react-dropzone';
 import AudioPlayer from './Components/AudioPlayer';
 import Playlist from './Components/Playlist';
-import "./App.css";
+import './App.css';
 
 const App = () => {
   const [playlist, setPlaylist] = useState([]);
@@ -60,7 +60,7 @@ const App = () => {
   const handlePlay = (index) => {
     setCurrentTrackIndex(index);
     stop();
-    play({ 
+    play({
       sound: playlist[index].audioSrc,
       position: currentTime,
     });
@@ -68,12 +68,20 @@ const App = () => {
 
   const handlePause = () => {
     stop();
-    console.log(playlist);
   };
 
   const handleStop = () => {
     stop();
     setCurrentTrackIndex(null);
+  };
+
+  const handleClearPlaylist = () => {
+    setPlaylist([]);
+    setCurrentTrackIndex(null);
+    setCurrentTime(0);
+    localStorage.removeItem('playlist');
+    localStorage.removeItem('currentTrackIndex');
+    localStorage.removeItem('currentTime');
   };
 
   const { getRootProps, getInputProps } = useDropzone({ onDrop });
@@ -99,6 +107,9 @@ const App = () => {
             <Playlist playlist={playlist} onPlay={handlePlay} currentTrackIndex={currentTrackIndex} />
           </>
         )}
+        <button className="clear-playlist-button" onClick={handleClearPlaylist}>
+          Clear Playlist
+        </button>
       </div>
     </div>
   );

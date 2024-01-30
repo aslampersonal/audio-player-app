@@ -1,25 +1,34 @@
 .app-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    max-width: 600px;
+    margin: 0 auto;
     padding: 20px;
-    margin-bottom: 2rem;
   }
   
   .dropzone-container {
-    border: 2px dashed #cccccc;
-    padding: 10px;
+    border: 2px dashed #ddd;
+    padding: 20px;
+    margin-top: 20px;
     text-align: center;
     cursor: pointer;
-    margin: 20px 5px;
   }
   
-  .dropzone-container:hover {
-    background-color: #f9f9f9;
+  .dropzone-container p {
+    margin: 0;
   }
   
   .music-player-container {
-    width: 600px;
+    margin-top: 20px;
+  }
+  
+  .clear-playlist-button {
+    background-color: #ff6347;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
     margin-top: 10px;
+  }
+  
+  .clear-playlist-button:hover {
+    background-color: #d43c26;
   }
